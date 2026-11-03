@@ -40,12 +40,12 @@ PATTERNS = (
     (9, ((1, 2, 0, -1),)),
 )
 PATTERN_START_BY_LENGTH = (
-    11,  # maximum length 0
-    11,  # maximum length 1
-    10,  # maximum length 2
-    7,  # maximum length 3
-    1,  # maximum length 4
-    0,  # maximum length 5
+    11,
+    11,
+    10,
+    7,
+    1,
+    0,
 )
 
 THREATENING_SCORE = 300

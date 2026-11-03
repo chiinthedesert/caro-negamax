@@ -1,13 +1,9 @@
 from caro_negamax.constants import (
-    BLACK,
     DIRECTIONS,
     EMPTY,
-    INF,
     MOVE_OFFSETS,
     SIZE,
-    WHITE,
     WINNING_LENGTH,
-    WINNING_SCORE,
 )
 
 
