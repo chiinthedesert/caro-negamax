@@ -4,7 +4,8 @@ EMPTY = 0
 BLACK = 1
 WHITE = 2
 WINNING_LENGTH = 5
-WINNING_SCORE = 1000000
+WINNING_SCORE = 10**6
+INF = 10**9
 
 DIRECTIONS = (
     (0, 1),  # ngang
@@ -20,3 +21,31 @@ MOVE_OFFSETS = tuple(
     for dc in range(-CANDIDATE_RADIUS, CANDIDATE_RADIUS + 1)
     if not (dr == 0 and dc == 0)
 )
+
+# số khoảng trống tối đa giữa các quân cờ cùng màu để được tính là một formation
+MAX_GAPS = 1
+
+# các mẫu hình (pattern) và điểm số tương ứng
+PATTERNS = (
+    (10000, ((1, 5, 0, 0),)),
+    (700, ((1, 4, 0, 0),)),
+    (700, ((2, 4, 1, 0),)),
+    (700, ((2, 4, -1, 1),)),
+    (700, ((1, 4, 1, 0), (1, 4, -1, 1))),
+    (500, ((1, 4, 1, 0), (1, 3, 0, -1))),
+    (500, ((1, 4, -1, 1), (1, 3, 0, -1))),
+    (300, ((2, 3, 0, -1),)),
+    (50, ((3, 2, 0, -1),)),
+    (20, ((1, 3, 0, -1),)),
+    (9, ((1, 2, 0, -1),)),
+)
+PATTERN_START_BY_LENGTH = (
+    11,  # maximum length 0
+    11,  # maximum length 1
+    10,  # maximum length 2
+    7,  # maximum length 3
+    1,  # maximum length 4
+    0,  # maximum length 5
+)
+
+THREATENING_SCORE = 300
