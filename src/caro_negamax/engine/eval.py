@@ -39,8 +39,12 @@ def evaluate_board(board, stone_list, player) -> int:
 
 
 def evaluate_move(board, move, player) -> int:
-    broken_measurements = measure_all_directions(board, move, player, allow_gap=True)
-    broken_score = evaluate_directions(broken_measurements)
+    measurements = measure_all_directions(board, move, player, allow_gap=True)
+
+    if all(space_count == 0 for _, _, space_count in measurements):
+        return evaluate_directions(measurements)
+
+    broken_score = evaluate_directions(measurements)
 
     consecutive_measurements = measure_all_directions(
         board, move, player, allow_gap=False
@@ -53,9 +57,11 @@ def evaluate_move(board, move, player) -> int:
 def evaluate_directions(
     measurements: list[tuple[int, int, int]],
 ) -> int:
-    score = sum(length - 1 for length, _, _ in measurements)
-
-    max_length = max(length for length, _, _ in measurements)
+    score = 0
+    max_length = 0
+    for length, _, _ in measurements:
+        score += length - 1
+        max_length = max(max_length, length)
 
     start_pattern = PATTERN_START_BY_LENGTH[max_length]
 
@@ -71,7 +77,7 @@ def evaluate_directions(
 
 
 def match_pattern(measurements, pattern) -> int:
-    match_counts = []
+    min_matches = 999
 
     for min_occurrence, length, block_count, space_count in pattern:
         occurrences = 0
@@ -84,9 +90,11 @@ def match_pattern(measurements, pattern) -> int:
             ):
                 occurrences += 1
 
-        match_counts.append(occurrences // min_occurrence)
-
-    return min(match_counts)
+        matches = occurrences // min_occurrence
+        if matches < 0:
+            return 0
+        min_matches = min(min_matches, matches)
+    return min_matches
 
 
 def measure_all_directions(

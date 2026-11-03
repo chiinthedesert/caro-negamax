@@ -51,11 +51,6 @@ def get_candidate_moves(board, stone_list) -> list[tuple[int, int]]:
 
 def make_move(board, stone_list, move, player):
     row, col = move
-    if not (0 <= row < SIZE and 0 <= col < SIZE):
-        raise ValueError("vị trí không hợp lệ")
-
-    if board[row][col] != EMPTY:
-        raise ValueError("vị trí đã có quân cờ")
     board[row][col] = player
     stone_list.append(move)
 
