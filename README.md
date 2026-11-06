@@ -7,7 +7,7 @@ Mục tiêu của đề tài là tìm hiểu thuật toán trí tuệ nhân tạ
 
 ## Tính năng hiện có
 
-- Bàn cờ 20×20, thắng khi có 5 quân liên tiếp (ngang, dọc, 2 đường chéo).
+- Bàn cờ 19x19, thắng khi có 5 quân liên tiếp (ngang, dọc, 2 đường chéo).
 - Chỉ sinh các nước ứng viên trong bán kính 2 quanh những quân đã đánh (giảm số node cần duyệt).
 - **Hàm đánh giá theo mẫu hình (pattern)**: nhận diện 4 quân, 3 quân, thế bị chặn 1 đầu / 2 đầu, mẫu có khoảng trống.
 - **Negamax + Alpha-Beta pruning**, có sắp xếp nước đi (move ordering) để tăng hiệu quả cắt tỉa.
